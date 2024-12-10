@@ -26,7 +26,6 @@ public class AgenteEvolutivoReceptor extends Agent {
                         ByteArrayInputStream byteStream = new ByteArrayInputStream(objetoSerializado);
                         ObjectInputStream objectStream = new ObjectInputStream(byteStream);
 
-                        // Deserializar objeto
                         DataSetEvolutivo dataSetEvolutivo = (DataSetEvolutivo) objectStream.readObject();
                         objectStream.close();
 

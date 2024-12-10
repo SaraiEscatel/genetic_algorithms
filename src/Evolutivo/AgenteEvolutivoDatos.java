@@ -22,13 +22,13 @@ public class AgenteEvolutivoDatos extends Agent {
                 DataSetEvolutivo dataSetEvolutivo = new DataSetEvolutivo(x, y);
 
                 try{
-                    //serializacion del objeto
+
                     ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
                     ObjectOutputStream objectStream = new ObjectOutputStream(byteStream);
                     objectStream.writeObject(dataSetEvolutivo);
                     objectStream.close();
 
-                    //convertir a arreglo de byte para enviarlo
+
                     byte[] serializedObject = byteStream.toByteArray();
                     ACLMessage mensaje = new ACLMessage(ACLMessage.REQUEST);
                     mensaje.addReceiver(getAID("AgenteEvolutivo")); // Nombre del receptor

@@ -11,7 +11,7 @@ public class AlgoritmoGenetico {
     private double fitness = 0.95;
     private Random random = new Random();
 
-    // Getters para los campos privados
+
     public double getTasaCruce() {
         return tasaCruce;
     }
@@ -29,7 +29,7 @@ public class AlgoritmoGenetico {
     }
 
     public AlgoritmoGenetico() {
-        // Constructor sin cambios, puedes inicializar los valores aquí si los necesitas
+
     }
 
 
@@ -81,7 +81,7 @@ public class AlgoritmoGenetico {
             // Reemplazar la población vieja con la nueva
             poblacion = nuevaPoblacion;
 
-            // Evaluar el fitness de la mejor solución
+
             double mejorFitness = 0;
             for (double[] cromosoma : poblacion) {
                 double fitness = evaluarFitness(cromosoma, dataSetEvolutivo);
@@ -111,12 +111,12 @@ public class AlgoritmoGenetico {
             double[] padre2 = seleccionarAleatorio(poblacion);
 
             if (random.nextDouble() < tasaCruce) {
-                // Cruce de un punto
+
                 int puntoCruce = random.nextInt(padre1.length);
                 double[] hijo1 = new double[padre1.length];
                 double[] hijo2 = new double[padre2.length];
 
-                // Copiar los genes hasta el punto de cruce
+
                 System.arraycopy(padre1, 0, hijo1, 0, puntoCruce);
                 System.arraycopy(padre2, puntoCruce, hijo1, puntoCruce, padre2.length - puntoCruce);
                 System.arraycopy(padre2, 0, hijo2, 0, puntoCruce);
@@ -132,15 +132,14 @@ public class AlgoritmoGenetico {
         return nuevaPoblacion;
     }
 
-    // Supongamos que estamos usando una regresión lineal, donde el cromosoma representa los coeficientes
-// de la recta: y = a * x + b
+
     public double evaluarFitness(double[] cromosoma, DataSetEvolutivo dataSetEvolutivo) {
         double errorTotal = 0;
         for (int i = 0; i < dataSetEvolutivo.x.length; i++) {
             double prediccion = cromosoma[0] * dataSetEvolutivo.x[i] + cromosoma[1]; // y = a * x + b
-            errorTotal += Math.pow(dataSetEvolutivo.y[i] - prediccion, 2); // Error cuadrático
+            errorTotal += Math.pow(dataSetEvolutivo.y[i] - prediccion, 2);
         }
-        return 1 / (1 + errorTotal); // Fitness: entre 0 y 1 (cuanto menor es el error, mayor es el fitness)
+        return 1 / (1 + errorTotal);
     }
 
 
